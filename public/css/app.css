@@ -4185,7 +4185,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination {
   display: inline-block;
   padding-left: 0;  
-  margin-left: 75%;
+  margin-left: 70%;
   margin-right: 0;
 }
 
@@ -6863,7 +6863,7 @@ footer#login {
         left: -50%;
         top: 0;
         background: #f3f3f3;
-        height: 110%;
+        height: 120%;
         width: 53px;
     }
     

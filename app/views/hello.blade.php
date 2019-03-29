@@ -6,8 +6,7 @@
             <nav class="nav-container showNav">
                 <ul class="nav-list">
                     <li class="list-item"><a href="/" class="home-link">Home</a></li>
-                    <li class="list-item"><a href="descargar" class="down-link">Download</a></li>
-                    <li class="list-item"><a href="/" class="up-link">Home</a></li>                    
+                    <li class="list-item"><a href="descargar" class="down-link">Download</a></li>                                  
                 </ul>
             </nav> 
         <div class="container">
@@ -50,8 +49,14 @@
                     <?php echo $data->links(); ?>                
                 </div>                                    
             </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-10">
+                    <img src="/images/velez-caicedo.svg" style="max-width: 150px;">
+                </div>
+            </div>
         </div>
     </div>
+    
     <footer>
         <div class="container">                                 
             <div class="row">
