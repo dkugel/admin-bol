@@ -19,10 +19,14 @@
                     {{ Session::get('mensaje_error') }}
                 @endif
                 {{ Form::open(array('url' => 'login')) }}
-                    
-                    <input id="username" type="text" placeholder="Usuario" class="form-control" name="username" value="{{ Input::old('username') }}" required autofocus>
-                    <div class="labelSpace"></div>
-                    <input id="password" type="password" placeholder="Contraseña" class="form-control" name="password" required>
+                    <div class="form-group float-label">
+                        <label for="username">Usuario</label>
+                        <input id="username" type="text" placeholder="Usuario" class="form-control" name="username" value="{{ Input::old('username') }}" required autofocus>
+                    </div>
+                    <div class="form-group float-label">
+                        <label for="password">Password</label>
+                        <input id="password" type="password" placeholder="Contraseña" class="form-control" name="password" required>
+                    </div>
                     {{--{{ Form::password('password'); }}
                     {{ Form::label('lblRememberme', 'Recordar contraseña') }}
                     {{ Form::checkbox('rememberme', true) }} --}}               
@@ -47,4 +51,39 @@
         </div>
     </div>
 </div>
+<footer id="login">
+    <div class="container">                                 
+        <div class="row">
+            <div class="col-12">                    
+                <ul class="social-media">
+                    <li>
+                        <a title="Facebook" target="_blank" href="https://www.facebook.com/pages/Seguros-Bol%C3%ADvar/143296635757515">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a title="Twitter" target="_blank" href="https://twitter.com/segurosbolivar">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a title="YouTube" target="_blank" href="https://www.youtube.com/segurosbolivar">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+                <div class="copyright desktop">
+                    © 2019 - <a title="Seguros Bolivar" target="_blank" href="http://www.segurosbolivar.co">Seguros Bolivar</a> - Todos los derechos reservados
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/bootstrap-float-label.js"></script>
+<script>
+    $.bootstrapFloatLabel();
+</script>
 @endsection

@@ -39,4 +39,14 @@ class HomeController extends BaseController {
 		$data = DB::table('directorio_general')->paginate(15);
 		return View::make('hello')->with('data',$data);
 	}
+	public function Excel()
+	{
+		$datos = Modules::select()->get();
+		Excel::create('Directorio', function($excel) use($datos) {
+			$excel->sheet('Directorio General', function($sheet) use($datos) 
+			{
+				$sheet->fromArray($datos);
+			});
+		})->export('xls');
+	}
 }
