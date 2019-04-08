@@ -20,7 +20,6 @@ Route::get('logout', 'AuthController@logOut'); // Finalizar sesión
 Route::get('descargar', 'HomeController@Excel'); // Descargar Excel
 
 
-
 // Nos indica que las rutas que están dentro de él sólo serán mostradas si antes el usuario se ha autenticado.
 Route::group(array('before' => 'auth'), function()
 {

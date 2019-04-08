@@ -31,7 +31,7 @@
                             <th>Ciudad</th>
                             <th>Servicio</th>
                             <th>Especialidad</th>
-                            <th></th>
+                            <th><a href="#" class="more-info">más</a></th>
                                 <?php foreach ($data as $dato): ?>
                                 <tr>
                                     <td class="centered"><?php echo $dato->tipo_id; ?></td>
@@ -41,7 +41,7 @@
                                     <td><?php echo $dato->ciudad; ?></td>
                                     <td><?php echo $dato->agrupador; ?></td>
                                     <td><?php echo $dato->especialidad; ?></td>
-                                    <td></td>
+                                    <td><a href="#" class="more-info" data-toggle="modal" data-target="#myModal<?php echo $dato->id; ?>" data-id="{{ $dato->id }}">más</a></td>
                                 </tr>
                                 <?php endforeach; ?>
                         </table>
@@ -50,33 +50,59 @@
                 </div>                                    
             </div>
 
-            <div class="container">
-                    <h2>Modal Example</h2>
-                    <!-- Trigger the modal with a button -->
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-                  
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal" role="dialog">
-                      <div class="modal-dialog">
-                      
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Modal Header</h4>
-                          </div>
-                          <div class="modal-body">
-                            <p>Some text in the modal.</p>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          </div>
+            <div class="container">                                      
+                <!-- Modal -->
+                <?php foreach ($data as $dato): ?>
+                <div class="modal fade" id="myModal<?php echo $dato->id; ?>" role="dialog">
+                    <div class="modal-dialog">
+                    
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>                        
                         </div>
-                        
-                      </div>
+                        <div class="modal-body">
+                        <p><span>Tipo de identificación: </span><?php echo $dato->tipo_id; ?></p>
+                        <p><span># de identificación: </span><?php echo $dato->num_id; ?></p>
+                        <p><span>Nombres: </span><?php echo $dato->nombres; ?></p>
+                        <p><span>Departamento: </span><?php echo $dato->departamento; ?></p>
+                        <p><span>Ciudad: </span><?php echo $dato->ciudad; ?></p>
+                        <p><span>Servicio: </span><?php echo $dato->agrupador; ?></p>
+                        <p><span>Especialidad: </span><?php echo $dato->especialidad; ?></p>
+                        <p><span>Direcciones: </span><?php echo $dato->direccion; ?></p>
+                        <p><span>Teléfono o Celular: </span><?php echo $dato->telefono; ?></p>
+                        <p><span>Médico de confianza: </span><?php echo $dato->aliado; ?></p>                        
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-bol" data-toggle="modal" data-target="#myModalDelete<?php echo $dato->id; ?>" data-id="{{ $dato->id }}" data-dismiss="modal">Eliminar</button>
+                            <button type="button" class="btn btn-bol" data-toggle="modal" data-target="#myModalDelete<?php echo $dato->id; ?>" data-id="{{ $dato->id }}" >Editar</button>
+                        </div>
                     </div>
                     
-                  </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+
+                <?php foreach ($data as $dato): ?>
+                <div class="modal fade" id="myModalDelete<?php echo $dato->id; ?>" role="dialog">
+                    <div class="modal-dialog">                        
+                    <!-- Modal content-->
+                    <div class="modal-content">    
+                        <div class="advertencia">                            
+                            <img src="/images/warning.svg"><br>
+                            ¿Esta seguro que desea eliminar este dato de la base?                                                        
+                        </div>                    
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-bol" data-toggle="modal" data-target="#myModalDelete<?php echo $dato->id; ?>" data-id="{{ $dato->id }}" >Si, eliminar</button>
+                            <button type="button" class="btn btn-bol" data-toggle="modal" data-target="#myModalDelete<?php echo $dato->id; ?>" data-id="{{ $dato->id }}" >No eliminar</button>
+                        </div>
+                    </div>
+                    
+                    </div>
+                </div>
+                <?php endforeach; ?>
+                
+                </div>
 
 
             <div class="row">

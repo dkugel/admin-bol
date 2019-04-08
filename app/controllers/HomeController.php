@@ -49,4 +49,5 @@ class HomeController extends BaseController {
 			});
 		})->export('xls');
 	}
+	
 }

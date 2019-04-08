@@ -15,9 +15,7 @@
                     </div>                                                                                                                                                                                                                
                 </div> 
                 {{-- Preguntamos si hay algún mensaje de error y si hay lo mostramos  --}}
-                @if(Session::has('mensaje_error'))
-                    {{ Session::get('mensaje_error') }}
-                @endif
+                
                 {{ Form::open(array('url' => 'login')) }}
                     <div class="form-group float-label">
                         <label for="username">Usuario</label>
@@ -41,6 +39,9 @@
                         </div>
                     </div>                                        
                 {{ Form::close() }}
+                @if(Session::has('mensaje_error'))
+                    {{ Session::get('mensaje_error') }}
+                @endif
                 <div class="form-group">
                     <div class="col-md-12">
                         <p style="font-style:italic; text-align:center">A este sitio solo puede ingresar personal autorizado, si usted requiere más información puede comunicarse al correo <span style="color: #016D38;text-decoration:underline">xxxxxx@xxxxxx.com</span></p>

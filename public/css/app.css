@@ -6737,14 +6737,40 @@ form{
   height: 34px;
 }
 .tabla-bol td{
-  height: 50px;
+  height: 55px;
   border-bottom: solid 1px #eaeaea;
   background-color: #ffffff;
   text-align: left;
   padding-left: 5px;
 }
+.tabla-bol td a{
+  text-align: center;
+  margin-right: -5px;
+}
+.more-info{
+  color:transparent;
+  background: url('../images/icono-ver-mas-administrador-normal.svg') no-repeat center center;
+  background-size: 17px
+}
+.more-info:hover{
+  background: url('../images/icono-ver-mas-administrador-active.svg') no-repeat center center;
+  background-size: 17px;
+}
 .centered{
   text-align: center !important;
+}
+.modal-body span{
+  color:#016D38;
+}
+.advertencia{
+  color:#b93b4e;
+  text-align: center;
+  font-style: italic;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.advertencia img{
+  width: 50px;
 }
 /*  Footer */
 

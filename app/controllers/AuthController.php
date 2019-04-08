@@ -38,7 +38,7 @@ class AuthController extends BaseController {
         }
         // En caso de que la autenticación haya fallado manda un mensaje al formulario de login y también regresamos los valores enviados con withInput().
         return Redirect::to('login')
-                    ->with('mensaje_error', 'Tus datos son incorrectos')
+                    ->with('mensaje_error', '<p style="color:red; text-align:right">Tus datos son incorrectos*</p>')
                     ->withInput();
     }
     /**
