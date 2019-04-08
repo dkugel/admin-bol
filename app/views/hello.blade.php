@@ -17,9 +17,14 @@
                         <img src="/images/cerrar-sesion.png">
                     </div>
                 </div>
-            </div>
+            </div>            
         </div>
         <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 col-md-offset-9" style="text-align: center;">
+                    <a href="new" class="btn btn-new" data-toggle="modal" data-target="#myModalUpdateRecord" >Crear nuevo dato</a>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12">
                     <div class="bol-content">
@@ -74,8 +79,8 @@
                         <p><span>Médico de confianza: </span><?php echo $dato->aliado; ?></p>                        
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-bol" data-toggle="modal" data-target="#myModalDelete<?php echo $dato->id; ?>" data-id="{{ $dato->id }}" data-dismiss="modal">Eliminar</button>
-                            <button type="button" class="btn btn-bol" data-toggle="modal" data-target="#myModalDelete<?php echo $dato->id; ?>" data-id="{{ $dato->id }}" >Editar</button>
+                            <button type="button" class="btn btn-edit" data-toggle="modal" data-target="#myModalUpdate<?php echo $dato->id; ?>" data-id="{{ $dato->id }}" data-dismiss="modal">Editar</button>
+                            <button type="button" class="btn btn-delete" data-toggle="modal" data-target="#myModalDelete<?php echo $dato->id; ?>" data-id="{{ $dato->id }}" data-dismiss="modal">Eliminar</button>                            
                         </div>
                     </div>
                     
@@ -101,8 +106,154 @@
                     </div>
                 </div>
                 <?php endforeach; ?>
-                
+
+                <?php foreach ($data as $dato): ?>
+
+                <div class="modal fade" id="myModalUpdate<?php echo $dato->id; ?>" role="dialog">
+                    <div class="modal-dialog">                        
+                    <!-- Modal content-->
+                    <div class="modal-content">   
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>                        
+                        </div>     
+                        {{ Form::open(array('url' => '/', 'method' => 'post','class' =>'editForm')) }}                                            
+                            <div class="form-group label">
+                                <label for="tipoid">Tipo de identificación:</label>
+                                <input id="tipoid" type="text" value="<?php echo $dato->tipo_id; ?>" class="form-control" name="tipoid" required >
+                            </div>
+                            <div class="form-group label">
+                                <label for="identificacion"># de identificación</label>
+                                <input id="identificacion" type="text" value="<?php echo $dato->num_id; ?>" class="form-control" name="identificacion" required>
+                            </div>
+                            <div class="form-group label">
+                                <label for="nombre">Nombres:</label>
+                                <input id="nombre" type="text" value="<?php echo $dato->nombres; ?>" class="form-control" name="nombre" required>
+                            </div>
+                            <div class="form-group label">
+                                <label for="departamento">Departamento:</label>
+                                <input id="departamento" type="text" value="<?php echo $dato->departamento; ?>" class="form-control" name="departamento" required>
+                            </div>
+                            <div class="form-group label">
+                                <label for="ciudad">Ciudad:</label>
+                                <input id="ciudad" type="text" value="<?php echo $dato->ciudad; ?>" class="form-control" name="ciudad" required>
+                            </div>
+                            <div class="form-group label">
+                                <label for="servicio">Servicio:</label>
+                                <input id="servicio" type="text" value="<?php echo $dato->agrupador; ?>" class="form-control" name="servicio" required>
+                            </div>
+                            <div class="form-group label">
+                                <label for="especialidad">Especialidad:</label>
+                                <input id="especialidad" type="text" value="<?php echo $dato->especialidad; ?>" class="form-control" name="especialidad" required>
+                            </div>
+                            <div class="form-group label">
+                                <label for="direcciones">Direcciones:</label>
+                                <input id="direcciones" type="text" value="<?php echo $dato->direccion; ?>" class="form-control" name="direcciones" required>
+                            </div>
+                            <div class="form-group label">
+                                <label for="telefono">Teléfono o celular</label>
+                                <input id="telefono" type="text" value="<?php echo $dato->telefono; ?>" class="form-control" name="telefono" required>
+                            </div>
+                            <div class="form-group label">
+                                <label for="aliado">Médico de confianza</label>
+                                <input id="aliado" type="text" value="<?php echo $dato->aliado; ?>" class="form-control" name="aliado" required>
+                            </div>
+                            <div class="form-group label" style="display: none">                                
+                                <input id="gid" type="text" value="<?php echo $dato->id; ?>" class="form-control" name="gid" >
+                            </div>
+                            
+                            <div class="labelSpace"></div>
+                            <div class="labelSpace"></div>
+                            <div class="row">
+                                <div class="labelSpace"></div>
+                                <div class="col-md-12 col-md-offset-4" style="padding-top: 20px;">
+                                    <button type="submit" class="btn btn-bol" value="submit">
+                                        GUARDAR
+                                    </button>                                               
+                                </div>
+                                <div class="col-md-12 col-md-offset-4" style="padding-top: 10px;">                                        
+                                    <a class="link-nr" href="#" data-dismiss="modal">Cancelar</a>                  
+                                </div>
+                            </div>                                        
+                        {{ Form::close() }}                                            
+                    </div>
+                    
+                    </div>
                 </div>
+
+                <?php endforeach; ?>
+
+                <div class="modal fade" id="myModalUpdateRecord" role="dialog">
+                        <div class="modal-dialog">                        
+                        <!-- Modal content-->
+                        <div class="modal-content">   
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>                        
+                            </div>     
+                            {{ Form::open(array('url' => 'insert', 'method' => 'post','class' =>'editForm')) }}                                            
+                                <div class="form-group label">
+                                    <label for="tipoid">Tipo de identificación:</label>
+                                    <input id="tipoid" type="text" value="" class="form-control" name="tipoid" required >
+                                </div>
+                                <div class="form-group label">
+                                    <label for="identificacion"># de identificación</label>
+                                    <input id="identificacion" type="text" value="" class="form-control" name="identificacion" required>
+                                </div>
+                                <div class="form-group label">
+                                    <label for="nombre">Nombres:</label>
+                                    <input id="nombre" type="text" value="" class="form-control" name="nombre" required>
+                                </div>
+                                <div class="form-group label">
+                                    <label for="departamento">Departamento:</label>
+                                    <input id="departamento" type="text" value="" class="form-control" name="departamento" required>
+                                </div>
+                                <div class="form-group label">
+                                    <label for="ciudad">Ciudad:</label>
+                                    <input id="ciudad" type="text" value="" class="form-control" name="ciudad" required>
+                                </div>
+                                <div class="form-group label">
+                                    <label for="servicio">Servicio:</label>
+                                    <input id="servicio" type="text" value="" class="form-control" name="servicio" required>
+                                </div>
+                                <div class="form-group label">
+                                    <label for="especialidad">Especialidad:</label>
+                                    <input id="especialidad" type="text" value="" class="form-control" name="especialidad" required>
+                                </div>
+                                <div class="form-group label">
+                                    <label for="direcciones">Direcciones:</label>
+                                    <input id="direcciones" type="text" value="" class="form-control" name="direcciones" required>
+                                </div>
+                                <div class="form-group label">
+                                    <label for="telefono">Teléfono o celular</label>
+                                    <input id="telefono" type="text" value="" class="form-control" name="telefono" required>
+                                </div>
+                                <div class="form-group label">
+                                    <label for="aliado">Médico de confianza</label>
+                                    <input id="aliado" type="text" value="" class="form-control" name="aliado" required>
+                                </div>
+                                <div class="form-group label" style="display: none">                                
+                                    <input id="gid" type="text" value="" class="form-control" name="gid" >
+                                </div>
+                                
+                                <div class="labelSpace"></div>
+                                <div class="labelSpace"></div>
+                                <div class="row">
+                                    <div class="labelSpace"></div>
+                                    <div class="col-md-12 col-md-offset-4" style="padding-top: 20px;">
+                                        <button type="submit" class="btn btn-bol" value="submit">
+                                            GUARDAR
+                                        </button>                                               
+                                    </div>
+                                    <div class="col-md-12 col-md-offset-4" style="padding-top: 10px;">                                        
+                                        <a class="link-nr" href="#" data-dismiss="modal">Cancelar</a>                  
+                                    </div>
+                                </div>                                        
+                            {{ Form::close() }}                                            
+                        </div>
+                        
+                        </div>
+                    </div>
+                
+            </div>
 
 
             <div class="row">

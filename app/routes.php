@@ -27,6 +27,8 @@ Route::group(array('before' => 'auth'), function()
     //Route::get('/', function()
     //{
       Route::get('/','HomeController@getData');
+      Route::post('/','HomeController@UpdateRecord');
+      Route::post('insert','HomeController@InsertRecord');
     //});
     // Esta ruta nos servirá para cerrar sesión.
   //  Route::get('logout', 'AuthController@logOut');
