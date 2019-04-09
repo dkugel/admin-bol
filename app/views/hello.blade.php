@@ -29,7 +29,7 @@
                 <div class="col-12">
                     <div class="bol-content">
                         <table  class="tabla-bol">
-                            <th id="tip_id" class="centered">Tipo de identificación</th>
+                            <th id="tip_id" class="centered" style="padding: 10px;">Tipo de identificación</th>
                             <th># de identificación</th>
                             <th>Nombres</th>
                             <th>Departamento</th>
@@ -89,7 +89,7 @@
                 <?php endforeach; ?>
 
                 <?php foreach ($data as $dato): ?>
-                <div class="modal fade" id="myModalDelete<?php echo $dato->id; ?>" role="dialog">
+                <div class="modal fade delete" id="myModalDelete<?php echo $dato->id; ?>" role="dialog">
                     <div class="modal-dialog">                        
                     <!-- Modal content-->
                     <div class="modal-content">    
@@ -98,8 +98,11 @@
                             ¿Esta seguro que desea eliminar este dato de la base?                                                        
                         </div>                    
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-bol" data-toggle="modal" data-target="#myModalDelete<?php echo $dato->id; ?>" data-id="{{ $dato->id }}" >Si, eliminar</button>
-                            <button type="button" class="btn btn-bol" data-toggle="modal" data-target="#myModalDelete<?php echo $dato->id; ?>" data-id="{{ $dato->id }}" >No eliminar</button>
+                            {{ Form::open(array('url' => 'delete', 'method' => 'post')) }}                                                           
+                                <input id="gid" type="text" value="<?php echo $dato->id; ?>" class="form-control" name="gid" style="display: none">                                
+                                <button type="submit" class="btn btn-bol" >Si, eliminar</a>
+                                <button type="button" class="btn btn-bol" data-dismiss="modal" >No eliminar</button>
+                            {{ Form::close() }}                            
                         </div>
                     </div>
                     
@@ -229,12 +232,8 @@
                                 <div class="form-group label">
                                     <label for="aliado">Médico de confianza</label>
                                     <input id="aliado" type="text" value="" class="form-control" name="aliado" required>
-                                </div>
-                                <div class="form-group label" style="display: none">                                
-                                    <input id="gid" type="text" value="" class="form-control" name="gid" >
-                                </div>
+                                </div>                                                                
                                 
-                                <div class="labelSpace"></div>
                                 <div class="labelSpace"></div>
                                 <div class="row">
                                     <div class="labelSpace"></div>

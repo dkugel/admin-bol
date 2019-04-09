@@ -89,8 +89,7 @@ class HomeController extends BaseController {
 	public function InsertRecord()
 	{
 		$insertrecord = array(
-			'id'			 => Input::get('gid'),
-            'tipoid'         => Input::get('tipoid'),
+			'tipoid'         => Input::get('tipoid'),
 			'identificacion' => Input::get('identificacion'),
 			'nombre'         => Input::get('nombre'),
 			'departamento'   => Input::get('departamento'),
@@ -103,24 +102,32 @@ class HomeController extends BaseController {
 		); 	
 		//$updaterecord = Input::get('aliado');
 
-		/* DB::table('directorio_general')
-            ->where('id', $updaterecord['id'] )
-			->update(array(			
-			'tipo_id'		=>	$updaterecord['tipoid'],
-			'num_id' 		=>	$updaterecord['identificacion'],
-			'nombres'		=>	$updaterecord['nombre'],
-			'ciudad'		=> 	$updaterecord['ciudad'],
-			'departamento'	=>	$updaterecord['departamento'],
-			'especialidad' 	=>	$updaterecord['especialidad'],
-			'agrupador' 	=>	$updaterecord['servicio'],
-			'direccion'		=> 	$updaterecord['direccion'],
-			'telefono'		=>	$updaterecord['telefono'],
-			'aliado'		=>	$updaterecord['aliado']					
-		));
+		DB::table('directorio_general')->insert(array(
+			'tipo_id'		=>	$insertrecord['tipoid'],
+			'num_id' 		=>	$insertrecord['identificacion'],
+			'nombres'		=>	$insertrecord['nombre'],
+			'ciudad'		=> 	$insertrecord['ciudad'],
+			'departamento'	=>	$insertrecord['departamento'],
+			'especialidad' 	=>	$insertrecord['especialidad'],
+			'agrupador' 	=>	$insertrecord['servicio'],
+			'direccion'		=> 	$insertrecord['direccion'],
+			'telefono'		=>	$insertrecord['telefono'],
+			'aliado'		=>	$insertrecord['aliado']		
+		));	
 		$data = DB::table('directorio_general')->paginate(15);
-		return View::make('hello')->with('data',$data);	 */		
-		//return var_dump($updaterecord);
-		return Input::all();
+		return View::make('hello')->with('data',$data);		
 	}
-	
+	public function ShowRecord()
+	{
+		$data = DB::table('directorio_general')->paginate(15);
+		return View::make('hello')->with('data',$data);	
+	}
+	public function DeleteRecord()
+	{
+		$deleteRecord = Input::get('gid');
+		DB::table('directorio_general')->where('id', $deleteRecord)->delete();
+		$data = DB::table('directorio_general')->paginate(15);
+		return View::make('hello')->with('data',$data);	
+		//return Input::all();	
+	}
 }

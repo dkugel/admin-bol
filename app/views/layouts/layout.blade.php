@@ -20,7 +20,7 @@
             <div class="row no-gutters">
                 <div class="col-6">
                     <div class="elipse">                    
-                        <img src="/images/logo-seguros-bolivar.svg">                               
+                        <a href="/"><img src="/images/logo-seguros-bolivar.svg"></a>
                     </div>
                 </div>
                 <div class="col-6"></div>                
