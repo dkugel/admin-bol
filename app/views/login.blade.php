@@ -55,7 +55,10 @@
 <footer id="login">
     <div class="container">                                 
         <div class="row">
-            <div class="col-12">                    
+            <div class="col-12"> 
+                <div class="legales">
+                    <img src="/images/vigilado-seguros-bolivar.svg">
+                </div>                    
                 <ul class="social-media">
                     <li>
                         <a title="Facebook" target="_blank" href="https://www.facebook.com/pages/Seguros-Bol%C3%ADvar/143296635757515">

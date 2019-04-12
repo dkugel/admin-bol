@@ -6568,12 +6568,12 @@ html {
 }
 
 .home {
-  background: url(/images/bg.jpg) center no-repeat;
+  background: url(../images/bg.jpg) center no-repeat;
   background-size: contain;
 }
 
 .result-page {
-  background: rgba(255, 255, 255, 0.1) url(/images/bg-2.jpg) center no-repeat;
+  background: rgba(255, 255, 255, 0.1) url(../images/bg-2.jpg) center no-repeat;
   background-size: cover;
 }
 
@@ -6605,6 +6605,7 @@ header img {
 }
 .sesion img{
   max-width: 50px;
+  max-height: 50px;
   margin-top: -20px;
   margin-left: 10px;  
 }
@@ -6660,7 +6661,13 @@ p {
   text-align: center;
   margin: auto;
 }
-
+.search-box{
+  width: 100%;
+  height: 40px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: solid 1px #eaeaea;
+}
 /*Formulario login*/
 form{
   max-width: 500px;
@@ -6706,6 +6713,7 @@ form{
   width: 25%;
   border-radius: 50px;
   color: #ffeca8;
+  height: auto;
 }
 .btn-bol:focus{
   color:#ffffff;
@@ -6742,7 +6750,7 @@ form{
   border-bottom: solid 1px #eaeaea;
   background-color: #ffffff;
   text-align: left;
-  padding-left: 5px;
+  padding-left: 10px;
 }
 .tabla-bol td a{
   text-align: center;
@@ -6846,10 +6854,8 @@ footer {
 footer#login {
   bottom:0;
 }
-
-
 .social-media {
-  margin: 20px 0;
+  margin: 20px 40px;
   list-style: none;
 }
 
@@ -6884,38 +6890,38 @@ footer#login {
 
 /* Barra lateral */
 .home-link{
-  background: url(/images/lateral/home-gray.svg) no-repeat center;  
+  background: url(../images/lateral/home-gray.svg) no-repeat center;  
   color:transparent;
 }
 .home-link a, .home-link a:hover{
   color: transparent;
 }
 .home-link:hover, .home-link:active{  
-  background: url(/images/lateral/home-green.svg) no-repeat center;
+  background: url(../images/lateral/home-green.svg) no-repeat center;
   z-index: 10;
   border-left: 2px solid #016D38;
 }
 .down-link{
-  background: url(/images/lateral/arrow-down-gray.svg) no-repeat center;  
+  background: url(../images/lateral/arrow-down-gray.svg) no-repeat center;  
   color:transparent;
 }
 .down-link a, .down-link a:hover{
   color: transparent;
 }
 .down-link:hover, .down-link:active{  
-  background: url(/images/lateral/arrow-down-green.svg) no-repeat center;
+  background: url(../images/lateral/arrow-down-green.svg) no-repeat center;
   z-index: 10;
   border-left: 2px solid #016D38;
 }
 .up-link{
-  background: url(/images/lateral/arrow-up-gray.svg) no-repeat center;  
+  background: url(../images/lateral/arrow-up-gray.svg) no-repeat center;  
   color:transparent;
 }
 .up-link a, .up-link a:hover{
   color: transparent;
 }
 .up-link:hover, .up-link:active{  
-  background: url(/images/lateral/arrow-up-green.svg) no-repeat center;
+  background: url(../images/lateral/arrow-up-green.svg) no-repeat center;
   z-index: 10;
   border-left: 2px solid #016D38;
 }
@@ -6948,11 +6954,11 @@ footer#login {
     }
     
     .nav-container {
-        position: absolute;
-        left: -50%;
+        position: fixed;
+        left: 0;
         top: 0;
         background: #f3f3f3;
-        height: 120%;
+        height: 100%;
         width: 53px;
     }
     
@@ -7044,4 +7050,31 @@ footer#login {
         -o-animation: showNav 1s ease forwards;
         animation: showNav .5s ease forwards;
     }
+  .welcome{        
+    height: -webkit-fill-available;
+    min-height: inherit;
+  }
+  .legales{      
+      display: inline;
+      top: 10px;
+      position: relative;
+  }
+  .legales img{
+    max-width: 150px;
+
+  }
+  @media(max-width:1400px){
+    .sesion {
+      left: -150px;
+    }
+    .pagination {
+      margin-left: 60%;
+    }
+  }
+  @media(max-width:1800px){
+    .welcome{
+      min-height: 497px;
+    }
+  }
+
     

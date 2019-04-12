@@ -3,21 +3,28 @@
 @section('content')
       
     <div class="welcome">   
-            <nav class="nav-container showNav">
-                <ul class="nav-list">
-                    <li class="list-item"><a href="/" class="home-link">Home</a></li>
-                    <li class="list-item"><a href="descargar" class="down-link">Download</a></li>                                  
-                </ul>
-            </nav> 
+        <nav class="nav-container showNav">
+            <ul class="nav-list">
+                <li class="list-item"><a href="/" class="home-link">Home</a></li>
+                <li class="list-item"><a href="descargar" class="down-link">Download</a></li>                                  
+            </ul>
+        </nav> 
         <div class="container">
             <div class="row">
                 <div class="col-md-2 col-md-offset-12">
                     <div class="sesion">                        
                         <a href="logout">Cerrar sesión</a>
-                        <img src="/images/cerrar-sesion.png">
+                        <img src="images/cerrar-sesion.png">
                     </div>
                 </div>
             </div>            
+        </div>
+        <div class="container">
+            <div class="row">    
+                <div class="col-md-4 col-md-offset-4">                                                                    
+                <input type="text" name="search" id="search" class="search-box" placeholder="Buscar..." />                                                                                                
+                </div>
+            </div>
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -29,14 +36,18 @@
                 <div class="col-12">
                     <div class="bol-content">
                         <table  class="tabla-bol">
-                            <th id="tip_id" class="centered" style="padding: 10px;">Tipo de identificación</th>
-                            <th># de identificación</th>
-                            <th>Nombres</th>
-                            <th>Departamento</th>
-                            <th>Ciudad</th>
-                            <th>Servicio</th>
-                            <th>Especialidad</th>
-                            <th><a href="#" class="more-info">más</a></th>
+                            <thead>
+                                <tr>
+                                <th id="tip_id" class="centered" style="padding: 10px;">Tipo de identificación</th>
+                                <th># de identificación</th>
+                                <th>Nombres</th>
+                                <th>Departamento</th>
+                                <th>Ciudad</th>
+                                <th>Servicio</th>
+                                <th>Especialidad</th>
+                                <th><a href="#" class="more-info">más</a></th>
+                                </tr>
+                            </thead>
                                 <?php foreach ($data as $dato): ?>
                                 <tr>
                                     <td class="centered"><?php echo $dato->tipo_id; ?></td>
@@ -51,10 +62,11 @@
                                 <?php endforeach; ?>
                         </table>
                     </div>
-                    <?php echo $data->links(); ?>                
+                    <div class="links-pags">
+                        <?php echo $data->links(); ?>                
+                    </div>
                 </div>                                    
             </div>
-
             <div class="container">                                      
                 <!-- Modal -->
                 <?php foreach ($data as $dato): ?>
@@ -94,7 +106,7 @@
                     <!-- Modal content-->
                     <div class="modal-content">    
                         <div class="advertencia">                            
-                            <img src="/images/warning.svg"><br>
+                            <img src="images/warning.svg"><br>
                             ¿Esta seguro que desea eliminar este dato de la base?                                                        
                         </div>                    
                         <div class="modal-footer">
@@ -104,8 +116,7 @@
                                 <button type="button" class="btn btn-bol" data-dismiss="modal" >No eliminar</button>
                             {{ Form::close() }}                            
                         </div>
-                    </div>
-                    
+                    </div>                    
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -251,22 +262,36 @@
                         
                         </div>
                     </div>
-                
+                    <div class="modal-jquery">
+                    </div>  
+                    
+                    <div class="modal-update">
+                        {{ Form::open(array('url' => '/', 'method' => 'post','class' =>'editForm')) }} 
+                        {{ Form::close() }} 
+                    </div>       
+                      
+                    
+                    
+                    <div class="modal-delete">
+                        {{ Form::open(array('url' => 'delete', 'method' => 'post')) }} 
+                        {{ Form::close() }}  
+                    </div>       
+                    
             </div>
-
-
             <div class="row">
                 <div class="col-md-2 col-md-offset-10">
-                    <img src="/images/velez-caicedo.svg" style="max-width: 150px;">
+                    <img src="images/velez-caicedo.svg" style="max-width: 150px;">
                 </div>
             </div>
         </div>
-    </div>
-    
+    </div>    
     <footer>
         <div class="container">                                 
             <div class="row">
-                <div class="col-12">                    
+                <div class="col-12">
+                    <div class="legales">
+                        <img src="images/vigilado-seguros-bolivar.svg">
+                    </div>                    
                     <ul class="social-media">
                         <li>
                             <a title="Facebook" target="_blank" href="https://www.facebook.com/pages/Seguros-Bol%C3%ADvar/143296635757515">
@@ -292,6 +317,6 @@
             </div>
         </div>
     </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 @endsection
