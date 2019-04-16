@@ -7050,8 +7050,7 @@ footer#login {
         -o-animation: showNav 1s ease forwards;
         animation: showNav .5s ease forwards;
     }
-  .welcome{        
-    height: -webkit-fill-available;
+  .welcome{            
     min-height: inherit;
   }
   .legales{      

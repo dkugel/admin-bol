@@ -266,15 +266,13 @@
                     </div>  
                     
                     <div class="modal-update">
-                        {{ Form::open(array('url' => '/', 'method' => 'post','class' =>'editForm')) }} 
-                        {{ Form::close() }} 
+                        
                     </div>       
                       
                     
                     
                     <div class="modal-delete">
-                        {{ Form::open(array('url' => 'delete', 'method' => 'post')) }} 
-                        {{ Form::close() }}  
+                         
                     </div>       
                     
             </div>
